@@ -1,0 +1,107 @@
+package basics;
+import java.util.Scanner;
+public class swapnumbers
+{
+	static class Array{
+		int arr[];
+		int size;                                              //(Array Creation)
+		int capacity;
+		Array(int capacity)
+		{
+			arr=new int[capacity];
+			this.capacity=capacity;
+			size=0;
+		}
+	boolean insert(int index,int element)
+	{
+		if(index<0||index>size ||size>=capacity)
+		{                                                     //(Insertion)
+			System.out.print("Invalid Index");
+			return false;
+		}
+		for(int i=size;i>index;i--)
+		{
+			arr[i]=arr[i-1];
+		}
+		arr[index]=element;
+		size++;
+		return true;
+	}
+        int get(int index)
+	{
+		if(index<0||index>=size)
+		{
+			System.out.println("Invalid Index");       // (Get->return the value of the given index)
+			return -8888;
+		}
+		return arr[index];
+	
+	}
+	int set(int index,int element)
+	{
+		if(index<0||index>=size)
+		{                                                   //(Set->replace the element for the specified index)
+			System.out.println("Invalid Index");
+			return -9999;
+		}
+		arr[index]=element;
+		return arr[index];
+	}
+        int search(int element)
+	{
+		for(int i=0;i<arr.length;i++)
+		{                                                 // (Search->search the specified element and return the index )
+			if(arr[i]==element)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+        boolean delete(int index)
+	{
+		if(index<0||index>=size)
+		{
+			System.out.println("Can delete");
+			return false;
+		}
+		for(int i=index;i<size-1;i++)
+		{
+			arr[i]=arr[i+1];
+		}
+		size--;
+		return false;
+	}
+	void display()
+	{
+		for(int i=0;i<size;i++)                             //(Display the array)
+		{
+			System.out.println(arr[i]+" ");
+		}
+	}
+	}
+	public static void main(String args[])
+	{
+		Array a=new Array(5);
+		a.insert(0, 10);                                     //(Main function)
+		a.insert(1,20);
+		a.insert(2, 30);
+                a.get(1);
+                a.set(0,40);
+                a.display();
+                System.out.println("Search:"+a.search(40))         //we have replace the value 40 by using set the operation so there is no 10
+	        a.delete(0);
+                a.display();
+	
+	}
+	
+}
+
+OUTPUT  :
+40
+20        //->INSERT AND SET FOR FIRST ELEMET 10->40
+30
+Get:20
+Search:0
+20
+30        ->DELETE THE FIRST ELEMENT AND DISPLAYS THE REMAINING ELEMENT
