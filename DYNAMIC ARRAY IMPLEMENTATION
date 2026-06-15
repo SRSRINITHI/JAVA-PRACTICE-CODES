@@ -1,0 +1,135 @@
+package basics;
+import java.util.Scanner;
+public class swapnumbers 
+{
+	static class Array{
+		int arr[];
+		int size;
+		int capacity;
+		Array(int capacity)
+		{
+			arr=new int[capacity];
+			this.capacity=capacity;
+			size=0;
+		}
+	boolean insert(int index,int element)
+	{
+		if(index<0||index>size)
+		{
+			System.out.print("Invalid Index");
+			return false;
+		}
+		if(size>=capacity)
+		{
+			resize();
+		}
+		for(int i=size;i>index;i--)
+		{
+			arr[i]=arr[i-1];
+		}
+		arr[index]=element;
+		size++;
+		return true;
+	}
+	int get(int index)
+	{
+		if(index<0||index>=size)
+		{
+			System.out.println("Invalid Index");
+			return -8888;
+		}
+		return arr[index];
+		
+	}
+	int set(int index,int element)
+	{
+		if(index<0||index>=size)
+		{
+			System.out.println("Invalid Index");
+			return -9999;
+		}
+		arr[index]=element;
+		return arr[index];
+	}
+	int search(int element)
+	{
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i]==element)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+	boolean delete(int index)
+	{
+		if(index<0||index>=size)
+		{
+			System.out.println("Can delete");
+			return false;
+		}
+		for(int i=index;i<size-1;i++)
+		{
+			arr[i]=arr[i+1];
+		}
+		size--;
+		return false;
+	}
+	void resize()
+	{
+		capacity=2*capacity;
+		int Arr[]=new int[capacity];                           //(double the size and create the new array and print )
+		for(int i=0;i<size;i++)
+		{
+			Arr[i]=arr[i];
+		}
+		arr=Arr;
+	}
+	void display()
+	{
+		for(int i=0;i<size;i++)
+		{
+			System.out.println(arr[i]+" ");
+		}
+	}
+	}
+	public static void main(String args[])
+	{
+		Array a=new Array(5);
+		a.insert(0, 10);
+		a.insert(1,20);
+		a.insert(2, 30);
+		a.insert(3, 50);
+		a.insert(4, 70);
+		a.insert(5, 60);
+		a.set(0, 40);
+		a.display();
+		System.out.println("Get:"+a.get(1));
+		System.out.println("Search:"+a.search(40));
+		a.delete(0);
+		a.display();
+		System.out.println(a.capacity);
+		
+	
+		
+	}
+		
+}
+
+OUTPUT
+40 
+20 
+30 
+50 
+70 
+60 
+Get:20
+Search:0
+20 
+30 
+50 
+70             //(CAN ADD THE EXTRA ELEMENT IF THE SIZE IS 5 MEANS WE CAN ADD UPTO 10)
+60 
+10
+	
