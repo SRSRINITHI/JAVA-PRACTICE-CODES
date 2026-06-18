@@ -1,0 +1,30 @@
+class Main{
+    public int[] shuffle(int[] nums, int n) {
+        int k[]=new int[n];
+        int j[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            k[i]=nums[i];
+        }
+        int u=0;
+        int m[]=new int[nums.length];
+        for(int i=n;i<nums.length;i++)
+        {
+            j[u]=nums[i];
+            u++;
+        }
+        int y=0;
+        for(int i=0;i<nums.length;i+=2)
+        {
+            m[i]=k[y++];
+           
+           
+        }
+        int c=0;
+        for(int i=1;i<nums.length;i+=2)
+        {
+            m[i]=j[c++];
+        }
+       return m;
+    }
+}
